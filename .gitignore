@@ -1,0 +1,74 @@
+### Maven ###
+target/
+!.mvn/wrapper/maven-wrapper.jar
+**/pom.xml.tag
+**/pom.xml.releaseBackup
+**/pom.xml.versionsBackup
+**/pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+### Gradle ###
+.gradle
+build/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+
+### IntelliJ IDEA ###
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+!/.idea/**/inspectionProfiles
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/dictionaries
+.idea/vcs.xml
+
+### Eclipse ###
+.project
+.classpath
+.cproject
+.settings/
+.bom
+bin/
+*.launch
+
+### VS Code ###
+.vscode/
+
+### Logs ###
+logs/
+*.log
+
+### Temporary files ###
+*.swp
+*.swo
+*~
+
+### Operating system files ###
+.DS_Store
+Thumbs.db
+
+### Others ###
+/target/
+/bin/
+/out/
+/node_modules/
+/dist/
+/.env
+/.tooling/
+hs_err_pid*
+*.db
+*.jar
+*.war

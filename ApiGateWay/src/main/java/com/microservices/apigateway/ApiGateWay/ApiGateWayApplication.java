@@ -1,15 +1,15 @@
-package com.user.service.UserService;
+package com.microservices.apigateway.ApiGateWay;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableFeignClients
-public class UserServiceApplication {
+public class ApiGateWayApplication {
+
 	public static void main(String[] args) {
-		SpringApplication.run(UserServiceApplication.class, args);
+		SpringApplication.run(ApiGateWayApplication.class, args);
 	}
+
 }
