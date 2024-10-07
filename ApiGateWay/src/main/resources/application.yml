@@ -2,6 +2,8 @@ server:
   port: 8084
 
 spring:
+  config:
+    import: "configserver:http://localhost:8085"
   application:
     name: APIGATEWAY
   cloud:
@@ -24,7 +26,7 @@ spring:
         locator:
           enabled: true
 
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka/
