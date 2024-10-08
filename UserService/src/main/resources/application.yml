@@ -3,7 +3,7 @@ server:
 
 spring:
   config:
-    import: "configserver:http://localhost:8085"
+    import: "optional:configserver:http://localhost:8085"
     
   application:
     name: UserService
@@ -17,6 +17,33 @@ spring:
       ddl-auto: update
     show-sql: true
 
+resilience4j:
+  circuitbreaker:
+    instances:
+      ratingHotelBreaker:
+        registerHealthIndicator: true
+        eventConsumerBufferSize: 10
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+        minimumNumberOfCalls: 5
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 6s
+        permittedNumberOfCallsInHalfOpenState: 3
+        slidingWindowType: COUNT_BASED
+        
+    retry:
+      instances:
+        ratingHotelBreaker:
+          max-attempts: 3
+          wait-duration: 3s
+          
+    ratelimiter:
+      instances:
+        userRatingLimiter:
+          limit-refresh-period: 4s
+          limit-for-period: 2
+          timeout-duration: 0s
+        
 #eureka:
 #  instance:
 #    prefer-ip-address: true
