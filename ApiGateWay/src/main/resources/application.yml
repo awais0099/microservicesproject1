@@ -21,10 +21,23 @@ spring:
           uri: lb://HOTELSERVICE
           predicates:
             - Path=/hotels/**
+        - id: AUTHSERVICE
+          uri: lb://AUTHSERVICE
+          predicates:
+            - Path=/auth/**
 
       discovery:
         locator:
           enabled: true
+
+#okta:
+#  oauth2:
+#    issuer: https://dev-96942190.okta.com/oauth2/default
+#    audience: api://default
+#    client-id: 0oak980179HDv32kA5d7
+#    client-secret: AHYA46H9CAPb6qsYD_xkwggJtUa0wRoWosyO_G2dvhvj5g8g3P7dsR-PPjwj-pST
+#    scopes: openid, profile, email, offline_access
+      
 
 #eureka:
 #  client:
