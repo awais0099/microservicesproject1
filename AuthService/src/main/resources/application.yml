@@ -1,6 +1,6 @@
 spring:
-#  config:
-#    import: "optional:configserver:http://localhost:8085"
+  config:
+    import: "optional:configserver:http://localhost:8085"
   security:
     user:
       name: admin

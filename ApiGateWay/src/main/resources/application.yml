@@ -6,30 +6,47 @@ spring:
     import: "optional:configserver:http://localhost:8085"
   application:
     name: APIGATEWAY
+    
   cloud:
     gateway:
       routes:
-        - id: userservice
+        - id: user-service
           uri: lb://USERSERVICE
           predicates:
             - Path=/users/**
-        - id: ratingservice
+          filters:
+            - RewritePath=/USERSERVICE/(?<remaining>.*), /${remaining}
+          
+        - id: rating-service
           uri: lb://RATINGSERVICE
           predicates:
             - Path=/ratings/**
-        - id: hotelservice
+          filters:
+            - RewritePath=/RATINGSERVICE/(?<remaining>.*), /${remaining}
+            - name: Jwt  # This will apply Jwt filter to the ratings route only
+          
+        - id: hotel-service
           uri: lb://HOTELSERVICE
           predicates:
             - Path=/hotels/**
-        - id: AUTHSERVICE
+          filters:
+            - RewritePath=/HOTELSERVICE/(?<remaining>.*), /${remaining}
+          
+        - id: auth-service
           uri: lb://AUTHSERVICE
           predicates:
             - Path=/auth/**
-
+          filters:
+            - RewritePath=/AUTHSERVICE/(?<remaining>.*), /${remaining}
+            
       discovery:
         locator:
           enabled: true
 
+logging:
+  level:
+    org.springframework.cloud.gateway: TRACE
+    
 #okta:
 #  oauth2:
 #    issuer: https://dev-96942190.okta.com/oauth2/default

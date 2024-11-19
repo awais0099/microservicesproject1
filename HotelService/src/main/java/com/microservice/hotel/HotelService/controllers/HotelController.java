@@ -1,5 +1,6 @@
 package com.microservice.hotel.HotelService.controllers;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.microservice.hotel.HotelService.dto.ApiResponse;
 import com.microservice.hotel.HotelService.entities.Hotel;
 import com.microservice.hotel.HotelService.service.HotelService;
 
@@ -21,20 +23,23 @@ public class HotelController {
 	private HotelService hotelService;
 	
 	@PostMapping("/hotels")
-	public ResponseEntity<Hotel> createHotel(@RequestBody Hotel hotel) {
+	public ResponseEntity<ApiResponse<Hotel>> createHotel(@RequestBody Hotel hotel) {
 		Hotel newHotel = hotelService.create(hotel);
-		return ResponseEntity.status(HttpStatus.CREATED).body(newHotel);
+		ApiResponse<Hotel> response = new ApiResponse<>(HttpStatus.OK.value(), true, "Created hotel", newHotel, new Date());
+		return ResponseEntity.status(HttpStatus.CREATED).body(response);
 	}
 	
 	@GetMapping("/hotels")
-	public ResponseEntity<List<Hotel>> getAllHotels() {
+	public ResponseEntity<ApiResponse<List<Hotel>>> getAllHotels() {
 		List<Hotel> hotels = hotelService.getAllHotel();
-		return ResponseEntity.ok(hotels);
+		ApiResponse<List<Hotel>> response = new ApiResponse<>(HttpStatus.OK.value(), true, "Retreived hotels", hotels, new Date());
+		return ResponseEntity.ok(response);
 	}
 	
 	@GetMapping("/hotels/{hotelId}")
-	public ResponseEntity<Hotel> getHotel(@PathVariable String hotelId) {
+	public ResponseEntity<ApiResponse<Hotel>> getHotel(@PathVariable String hotelId) {
 		Hotel hotel = hotelService.getHotel(hotelId);
-		return ResponseEntity.status(HttpStatus.OK).body(hotel);
+		ApiResponse<Hotel> response = new ApiResponse<>(HttpStatus.OK.value(), true, "Created hotel", hotel, new Date());
+		return ResponseEntity.status(HttpStatus.OK).body(response);
 	}
 }

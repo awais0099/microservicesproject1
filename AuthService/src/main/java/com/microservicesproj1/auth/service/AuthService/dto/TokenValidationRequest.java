@@ -5,13 +5,15 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Setter
 @Getter
-public class AuthRequest {
+@ToString
+public class TokenValidationRequest {
 	private String username;
-	private String password;
+    private String token;
 }
