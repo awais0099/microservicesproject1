@@ -30,7 +30,7 @@ It is designed to showcase:
 
 ## 🏗️ Architecture Diagram
 
-![Architecture](./architecture.png)recommended)*
+![Architecture](./architecture.png)
 
 ---
 
