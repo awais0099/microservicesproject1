@@ -28,7 +28,9 @@ It is designed to showcase:
 - **gRPC** – High-performance service-to-service communication  
 - **Zipkin** – Distributed tracing  
 
-> 📊 *(Add architecture diagram image here — highly recommended)*
+## 🏗️ Architecture Diagram
+
+![Architecture](./architecture.png)recommended)*
 
 ---
 
